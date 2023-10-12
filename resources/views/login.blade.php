@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
      body {
-    background: url('http://i.imgur.com/Eor57Ae.jpg') no-repeat fixed center center;
+    background: url('Eor57Ae.jpg') no-repeat fixed center center;
     background-size: cover;
     font-family: Montserrat;
 }
@@ -50,23 +50,23 @@
     outline: none;
 }
 
-.login-block input#username {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+.login-block input#email {
+    background: #fff url('u0XmBmv.png') 20px top no-repeat;
     background-size: 16px 80px;
 }
 
-.login-block input#username:focus {
-    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+.login-block input#email:focus {
+    background: #fff url('u0XmBmv.png') 20px bottom no-repeat;
     background-size: 16px 80px;
 }
 
 .login-block input#password {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background: #fff url('Qf83FTt.png') 20px top no-repeat;
     background-size: 16px 80px;
 }
 
 .login-block input#password:focus {
-    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background: #fff url('Qf83FTt.png') 20px bottom no-repeat;
     background-size: 16px 80px;
 }
 
@@ -99,31 +99,21 @@
 <body>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <div class="logo"></div>
-<div class="login-block">
-                <div class="card">
-                    <div class="card-header">Login</div>
-                    <div class="card-body">
+    <div class="login-block">
+    <h1>Login</h1>
                         <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" required>
+                         @csrf
+                             <div>
+                                <input type="email" name="email" value="" placeholder="email"  id="email" class="login-block" required>
                             </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" required>
+                            <div>
+                                <input type="password" name="password" value="" placeholder="Password"  id="password" class="login-block" required>
                             </div>
                             <button type="submit" class="btn btn-primary">submit</button>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-       
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- 
+
+
+
 </body>
 </html>
