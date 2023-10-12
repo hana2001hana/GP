@@ -15,7 +15,7 @@
 .logo {
     width: 213px;
     height: 36px;
-    background: url('http://i.imgur.com/fd8Lcso.png') no-repeat;
+    background: url('public\images\logo.png') no-repeat;
     margin: 30px auto;
 }
 
@@ -95,7 +95,6 @@
 }
     </style>
 </head>
-@include('header')
 <body>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <div class="logo"></div>
