@@ -38,3 +38,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+Route::get('/resume/{id}', 'ResumeResultController@show')->name('resume.show');
