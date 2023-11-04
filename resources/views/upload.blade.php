@@ -54,5 +54,9 @@
             <button type="submit">Upload CV</button>
         </form>
     </div>
+    <a href="{{ route('CV') }}">View CV</a>
+    <a href="{{ route('home') }}">Back to Home</a>
 </body>
 </html>
+
+

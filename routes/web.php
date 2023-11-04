@@ -40,11 +40,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/resume/{id}', 'ResumeResultController@show')->name('resume.show');
 
-Route::get('/upload', function () {
-    return view('upload');
-})->name('upload');
 
-Route::post('/upload', 'ResumeController@upload')->name('upload');
+// مسار لعرض نموذج رفع الملف
+Route::get('/upload', 'FileUploadController@index')->name('upload');
+// مسار لمعالجة تحميل الملف
+Route::post('/upload', 'FileUploadController@store')->name('upload');
+// مسار للصفحة الشخصية
+Route::get('/CV', 'CVController@index')->name('CV');
+
+
 
 
 
