@@ -109,8 +109,16 @@
                                 <input type="password" name="password" value="" placeholder="Password"  id="password" class="login-block" required>
                             </div>
                             <button type="submit" class="btn btn-primary">submit</button>
+                        
                         </form>
+            <div class="mb-3">
+                        <div class="mb-3">
+    <a href='http://127.0.0.1:8000/register' class="btn btn-secondary btn-sm">Register</a>
+</div>
+
+                        </div>            
     </div>
+    
 
 
 
