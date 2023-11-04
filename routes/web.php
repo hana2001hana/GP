@@ -39,3 +39,15 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/resume/{id}', 'ResumeResultController@show')->name('resume.show');
+
+Route::get('/upload', function () {
+    return view('upload');
+})->name('upload');
+
+Route::post('/upload', 'ResumeController@upload')->name('upload');
+
+
+
+
+
+

@@ -2,62 +2,34 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use App\Resume; // استيراد النموذج الذي تم إنشاؤه
+use Illuminate\Support\Facades\Storage;
 
 class ResumeController extends Controller
 {
-    public function upload(Request $request)
-    {
-        // التحقق من وجود ملف في الطلب
-        if ($request->hasFile('resume_file')) {
-            // استخراج الملف من الطلب
-            $file = $request->file('resume_file');
+    public function index()
+{
+    return view('upload');
+}
 
-            // التحقق من نوع الملف
-            if ($file->getClientOriginalExtension() === 'pdf') {
-                // توليد اسم ملف فريد لتخزينه
-                $file_name = uniqid() . '.pdf';
+public function store(Request $request)
+{
+    $request->validate([
+        'resume' => 'required|mimes:pdf', // قم بتحديد نوع الملف الذي تسمح برفعه (مثل PDF).
+    ]);
 
-                // تخزين الملف في المسار المحدد
-                $file->storeAs('resumes', $file_name);
+    if ($request->hasFile('resume')) {
+        $file = $request->file('resume');
+        $filename = 'resume.' . $file->getClientOriginalExtension();
+        $file->storeAs('resumes', $filename); // ستقوم هذه الخطوة بحفظ الملف في مجلد محدد بالمشروع.
 
-                // تحليل ملف السيرة الذاتية باستخدام PyPDF2
-                $pdf_text = "";
-                try {
-                    $pdf = \PyPDF2\PyPDF::fpassthru($file);
-                    $pdf_text = $pdf->extractText();
-                } catch (\Exception $e) {
-                    // إدراج الاستثناء هنا إذا لزم الأمر
-                }
+        // هنا يمكنك إضافة أي تحليل أو معالجة ترغب فيها للملف. 
+        // يمكنك استخدام المكتبات التي تحتاجها مثل PyPDF2 و spaCy للتحليل.
 
-                // تحليل نص السيرة الذاتية باستخدام SpaCy
-                $nlp = new \Spacy\Nlp();
-                $doc = $nlp->load($pdf_text);
-
-                // استخراج المعلومات من النص
-                $name = "";
-                $education = "";
-                $experience = "";
-
-                // قم بتحليل المعلومات اللازمة من النص هنا
-
-                // حفظ المعلومات في قاعدة البيانات
-                $resume = new Resume();
-                $resume->file_name = $file_name;
-                $resume->file_path = 'resumes/' . $file_name;
-                $resume->name = $name;
-                $resume->education = $education;
-                $resume->experience = $experience;
-                $resume->save();
-
-                return redirect()->route('resume.index')->with('success', 'تم رفع ملف السيرة الذاتية بنجاح.');
-            } else {
-                return back()->with('error', 'يجب أن يكون الملف بامتداد PDF فقط.');
-            }
-        } else {
-            return back()->with('error', 'الرجاء تحديد ملف السيرة الذاتية.');
-        }
+        return redirect()->route('profile'); // انتقل إلى صفحة الملف الشخصي بعد رفع الملف.
     }
+
+    return redirect()->back()->with('error', 'Failed to upload the file.'); // إذا حدث خطأ في الرفع.
+}
+
 }

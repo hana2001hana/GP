@@ -42486,6 +42486,9 @@ a.u-link.u-text-hover-grey-90:hover {
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Courses</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ route('upload') }}">Upload CV</a>  
+              </li>
             </ul>
             <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
                 @csrf
